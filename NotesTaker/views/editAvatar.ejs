@@ -1,0 +1,184 @@
+<div id="app">
+    <div class="container" style="width: 1366px;">
+      <div class="columns is-gapless">
+    <div class="column is-3">
+      <aside class="menu">
+        <ul class="menu-list">
+          <div class="menu-list__profile media">
+            <div class="media-left">
+              <figure class="image">
+                <img src="<%= user.avatar_url%>">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-5 font-color-white">
+                  <%= user.username %>
+              </p>
+            </div>
+          </div>
+          <div class="menu-list__main is-uppercase has-text-left">
+            <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
+            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i> Members</a></li>
+            <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i> Database</a></li>
+            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i> Statistics</a></li>
+            <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
+          </div>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-white">
+       <div class="wrapper">
+            <div class="box_wrapper">
+                <form id="image_selector">
+                    <!-- This is mens section  -->
+                    <h2 class="divider line one-line" contenteditable>Mens</h2>
+                    <div class="box">
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man.svg" value="man.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man1.svg" value="man1.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man2.svg"  value="man2.svg">
+                            </div>
+                        </div><br>
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man3.svg" value="man3.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man4.svg" value="man4.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man5.svg"  value="man5.svg">
+                            </div>
+                        </div><br>
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man6.svg" value="man6.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man7.svg" value="man7.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="man8.svg"  value="man8.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mens section ends  -->
+                    <!-- Girls section begins -->
+                    <h2 class="divider line one-line" contenteditable>Girls</h2>
+                    <div class="box">
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl.svg" value="girl.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="pharmacist.svg" value="pharmacist.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl1.svg" value="girl1.svg">
+                            </div>
+                        </div><br>
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl7.svg" value="girl7.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl4.svg" value="girl4.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl8.svg" value="girl8.svg">
+                            </div>
+                        </div><br>
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl2.svg" value="girl2.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl5.svg" value="girl5.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="girl6.svg" value="girl6.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Girls Section Ends -->
+                    <!-- Sci-Fi Section Begins -->
+                    <h2 class="divider line one-line" contenteditable>Sci-Fi</h2>
+                    <div class="box">
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="spy-bot.svg" value="spy-bot.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="robot.svg" value="robot.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="robot2.svg" value="robot2.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sci-Fi Section Ends -->
+                    <!-- Superhero Section Begins -->
+                    <h2 class="divider line one-line" contenteditable>Superheros</h2>
+                    <div class="box">
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero.svg" value="superhero.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero1.svg" value="superhero1.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero2.svg" value="superhero2.svg">
+                            </div>
+                        </div><br>
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero3.svg" value="superhero3.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero4.svg" value="superhero4.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero5.svg" value="superhero5.svg">
+                            </div>
+                        </div><br>
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero6.svg" value="superhero6.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero7.svg" value="superhero7.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="superhero8.svg" value="superhero8.svg">
+                            </div><br>
+                        </div>
+                    </div>
+                    <!-- Superhero section ends -->
+                    <!-- Nerds section -->
+                    <h2 class="divider line one-line" contenteditable>Nerds Section</h2>
+                    <div class="box">
+                        <div class="columns is-3-desktop is-centered">
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="networking.svg" value="networking.svg">
+                            </div>
+                            <div class="column center edit_image field">
+                                <input type="image" name="avatar_image" src="cloud.svg" value="cloud.svg">
+                            </div>
+                            <div class="column center edit_image">
+                                <input type="image" name="avatar_image" src="microchip.svg" value="microchip.svg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nerd section ends -->
+                    <button id="btn" class="button is-block is-info is-large is-fullwidth">Update Avatar 🤷🏻‍♀️</button>
+                </form>
+            </div>
+      </div>
+  </div>
+</div>

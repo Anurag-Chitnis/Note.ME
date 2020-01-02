@@ -1,0 +1,50 @@
+# Done - 1. Favorites functionality and push it in Favorites Tab 
+and also display it in dashboard with slight pink color
+
+1. Redo and undo functionality
+
+2. Admin add user and delete user functionality
+
+3. Also can view todos of any user
+
+4. Also can delete those post 
+
+
+
+const admin_delete = document.querySelectorAll('#admin_delete');
+        admin_delete.forEach(adminDelete => {
+            adminDelete.addEventListener('click', (e) => {
+                const userId = adminDelete.parentElement.id;
+                const url = "/adminDelete/"+userId;
+                console.log(url);               
+            })
+        })
+
+
+let selectedImage = [];
+        const images = document.querySelectorAll(".edit_image");
+        images.forEach(img => {
+            img.addEventListener('click', (e) => {
+                if (selectedImage.length < 1) {
+                    selectedImage.push(e.target);
+                    localStorage.setItem("ImageUrl", selectedImage[0].children[0].value);
+                    e.target.classList.add('selected');
+                }else {
+                    selectedImage[0].classList.remove('selected');
+                    selectedImage.pop();
+                    localStorage.clear();
+                    e.target.classList.add('selected');
+                    selectedImage.push(e.target);
+                    localStorage.setItem("ImageUrl", selectedImage[0].children[0].value)
+                    console.log(selectedImage[0].children[0].value);
+                }
+            })
+        })
+        document.querySelector("#image_selector").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const url = "/selectedImage/" + localStorage.getItem('ImageUrl');
+            fetch(url, {
+                method: "POST"
+            })
+            .then(res => console.log("success"))
+        })

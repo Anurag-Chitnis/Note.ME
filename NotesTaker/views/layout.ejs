@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Home | EJS</title>
+</head>
+<body>
+    <div class="container">
+        <div class="pageloader not-active">
+            <div class="lds-ripple"><div></div><div></div></div>
+          </div>
+        <%- body %>
+    </div>
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script>
+        window.addEventListener('load', () => {
+        document.querySelector('.pageloader').style.display = "block";
+            setTimeout(function() {
+                document.querySelector('.pageloader').style.display = "none";
+            },3000)
+        })
+
+        const hearts = document.querySelectorAll('#hearts');
+        console.log(hearts);
+        const box_image = document.querySelectorAll("#box_image");
+        hearts.forEach((heart, index) => {
+            heart.addEventListener('click', (e) => {
+                box_image[index].src = "diamond.svg";
+            })
+        })
+        const admin_delete = document.querySelectorAll('#admin_delete');
+        admin_delete.forEach(formElement => {
+            formElement.addEventListener('submit', (e) => {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'If you delete this user then all users data will be deleted',
+                    icon: 'error',
+                    confirmButtonText: 'Cool With It ✌'
+                })
+                .then(confirmed => {
+                    if(confirmed) {
+                        formElement.submit();
+                    }
+                })
+            })
+        })
+        let selectedImage = [];
+        const form = document.querySelector("#image_selector");
+        const images = document.querySelectorAll(".edit_image");
+        images.forEach(img => {
+            img.addEventListener('click', (e) => {
+                if (selectedImage.length < 1) {
+                    selectedImage.push(e.target);
+                    localStorage.setItem("ImageUrl", selectedImage[0].children[0].value);
+                    e.target.classList.add('selected');
+                }else {
+                    selectedImage[0].classList.remove('selected');
+                    selectedImage.pop();
+                    localStorage.clear();
+                    e.target.classList.add('selected');
+                    selectedImage.push(e.target);
+                    localStorage.setItem("ImageUrl", selectedImage[0].children[0].value)
+                }
+            })
+        })
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const url = "/editAvatar/" + localStorage.getItem("ImageUrl")
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You Want to select this image as avatar',
+                confirmButtonText:  "Confirm submit" + "✌"
+            })
+            .then(confirmed => {
+                if(confirmed) {
+                    fetch(url, {
+                        method: "POST",
+                    })
+                    .then(response => {
+                        window.location = "/dashboard"
+                    })
+                }
+            })
+        })
+            
+        
+</script>
+</body>
+</html>

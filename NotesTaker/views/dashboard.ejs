@@ -1,0 +1,193 @@
+<div id="app">
+    <div class="container" style="width: 1366px;">
+      <div class="columns is-gapless">
+    <div class="column is-3">
+      <aside class="menu">
+        <ul class="menu-list">
+          <div class="menu-list__profile media">
+            <div class="media-left">
+              <figure class="image">
+                <img src="<%= user.avatar_url%>">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-5 font-color-white">
+                <%= user.username %>
+              </p>
+            </div>
+          </div>
+          <div class="menu-list__main is-uppercase has-text-left">
+            <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
+            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i> Members</a></li>
+            <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i> Database</a></li>
+            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i> Statistics</a></li>
+            <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
+          </div>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-white pd-2">
+      <div class="wrapper">
+        <div class="notification is-primary">
+            <button class="delete"></button>
+            Welcome to the world of programmers, this app is specifically created for those 
+            who are interested to keep notes and want to play around
+        </div>
+
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="graphic-design.svg" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+              <p>
+                <strong><%= user.username %></strong> <small>@<%= user.username %></small>
+                <br> 
+                <% if(user.username !== "admin_12245") { %>
+                  Welcome <%= user.username %> this is how your message looks when you post it.
+                  I am excited to see what you do next 
+                <% }else { %>
+                  Welcome <%= user.username %> you have alrights to add or delete user from this application
+                <% } %>
+              </p>
+              </div>
+              <nav class="level is-mobile">
+                  <div class="level-left">
+                    <a class="level-item" aria-label="reply">
+                      <img src="hearts.svg" class="image is-24x24">
+                    </a>
+                    <a class="level-item" aria-label="retweet">
+                      <img src="writing.svg" class="image is-24x24">
+                    </a>
+                    <a class="level-item" aria-label="like">
+                      <img src="bin.svg" class="image is-24x24">
+                    </a>
+                  </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+
+        <% if(user.username == "admin_12245") { %>
+            <% allusers.forEach(eachUser => { %>
+              <% if(eachUser.username !== "admin_12245") { %>
+                <div class="box">
+                  <article class="media">
+                    <div class="media-left">
+                      <figure class="image is-64x64">
+                        <img src="graphic-design.svg" alt="Image" id="box_image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <div class="content">
+                      <p>
+                        <strong><%= eachUser.username %></strong> <small>@<%= eachUser.username %></small>
+                        <br> 
+                        <strong>Email: </strong><%= eachUser.email%>
+                      </p>
+                      </div>
+                      <nav class="level is-mobile">
+                          <div class="level-left">
+                            <a class="level-item" aria-label="reply">
+                              <img src="hearts.svg" class="image is-24x24">
+                            </a>
+                            <a class="level-item" aria-label="retweet">
+                              <img src="writing.svg" class="image is-24x24">
+                            </a>
+                            <form action="/adminDelete/<%= eachUser._id %>?_method=DELETE" method="POST" id="admin_delete">
+                              <a class="level-item" aria-label="like" id="<%= eachUser._id %>">
+                                <input type="image" src="bin.svg" class="image is-24x24" ></input>
+                              </a>
+                            </form>                  
+                          </div>
+                      </nav>
+                    </div>
+                  </article>
+                </div>
+              <% } %>
+            <% }) %>
+        <% }else { %>
+          <% ideas.forEach(idea => { %>
+            <% if(idea.favIdea != true) { %>
+              <div class="box">
+                <article class="media">
+                  <div class="media-left">
+                    <figure class="image is-64x64">
+                      <img src="graphic-design.svg" alt="Image" id="box_image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                    <p>
+                      <strong><%= idea.title%></strong> <small>@<%= user.username %></small>
+                      <br> 
+                      <%= idea.description %>
+                    </p>
+                    </div>
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                          <form action="/favIdea/<%= idea._id %>" method="GET">
+                            <a class="level-item" aria-label="reply">
+                              <input type="image" src="hearts.svg" class="image is-24x24" id="hearts">
+                            </a>
+                          </form>
+                          <a class="level-item" href="/editIdea/<%= idea._id %>" aria-label="retweet">
+                            <img src="writing.svg" class="image is-24x24">
+                          </a>
+                      
+                          <form action="/deleteIdea/<%= idea._id%>?_method=DELETE" method="POST">
+                            <a class="level-item" aria-label="like">
+                              <input type="image" src="bin.svg" class="image is-24x24"></input>
+                            </a>      
+                          </form>
+                        </div>
+                    </nav>
+                  </div>
+                </article>
+              </div>
+            <% }else { %>
+              <div class="box">
+                <article class="media">
+                  <div class="media-left">
+                    <figure class="image is-64x64">
+                      <img src="positive-vote.svg" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <div class="content">
+                      <p>
+                        <strong><%= idea.title%></strong> <small>@<%= user.username %></small>
+                        <br> 
+                        <%= idea.description %>
+                      </p>
+                    </div>
+                    <nav class="level is-mobile">
+                      <div class="level-left">
+                        <form action="/unFavIdea/<%= idea._id %>" method="GET">
+                          <a class="level-item" aria-label="reply">
+                            <input type="image" src="negative-vote.svg" class="image is-24x24" id="hearts">
+                          </a>
+                        </form>
+                        <a class="level-item" href="/editIdea/<%= idea._id %>" aria-label="retweet">
+                          <img src="writing.svg" class="image is-24x24">
+                        </a>
+                    
+                        <form action="/deleteIdea/<%= idea._id%>?_method=DELETE" method="POST">
+                          <a class="level-item" aria-label="like">
+                            <input type="image" src="bin.svg" class="image is-24x24"></input>
+                          </a>      
+                        </form>
+                      </div>
+                  </nav>
+                  </div>
+                </article>
+              </div>
+            <% } %>
+          <% }) %>
+        <% } %>
+    </div>
+  </div>
+</div>

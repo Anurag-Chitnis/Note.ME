@@ -1,0 +1,37 @@
+<section class="hero is-success is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-6 is-offset-3">
+                <h3 class="title has-text-black">Sign In</h3>
+                <hr class="login-hr">
+                <div class="box">
+                    <figure class="avatar">
+                        <img src="network.svg">
+                    </figure>
+                    <form action="/signIn" method="POST">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" required type="text" name="username" placeholder="Your Username">
+                            </div>
+                        </div>
+                
+
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-large" required type="password" name="password" placeholder="Your Password">
+                            </div>
+                        </div>
+                       
+                        </div>
+                        <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <p class="has-text-grey">
+                    <a href="/signUp">Sign Up</a> &nbsp;·&nbsp;
+                    <a href="/forgot/password">Forgot Password</a> &nbsp;·&nbsp;
+                    <a href="../">Need Help?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

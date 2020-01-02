@@ -1,0 +1,56 @@
+<div id="app">
+    <div class="container" style="width: 1366px;">
+      <div class="columns is-gapless">
+    <div class="column is-3">
+      <aside class="menu">
+        <ul class="menu-list">
+          <div class="menu-list__profile media">
+            <div class="media-left">
+              <figure class="image">
+                <img src="<%= user.avatar_url%>">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-5 font-color-white">
+                  <%= user.username %>
+              </p>
+            </div>
+          </div>
+          <div class="menu-list__main is-uppercase has-text-left">
+            <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
+            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i> Members</a></li>
+            <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i> Database</a></li>
+            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i> Statistics</a></li>
+            <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
+          </div>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-white">
+      <div class="wrapper">
+          <div class="box">
+
+              <figure class="avatar center">
+                <img src="<%= user.avatar_url%>" class="center">
+              </figure>
+
+
+              <form action="/editIdea/<%= idea._id %>?_method=PUT" method="POST">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" required type="text" name="title" value="<%= idea.title %>">
+                    </div>
+                </div>
+        
+    
+                <div class="field">
+                    <div class="control">
+                        <textarea class="input is-large" required type="text" name="description"><%= idea.description %></textarea>
+                    </div>
+                </div>
+                <button class="button is-block is-info is-large is-fullwidth">Submit <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

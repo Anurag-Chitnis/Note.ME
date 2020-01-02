@@ -1,0 +1,139 @@
+<div id="app">
+    <div class="container" style="width: 1366px;">
+      <div class="columns is-gapless">
+    <div class="column is-3">
+      <aside class="menu">
+        <ul class="menu-list">
+          <div class="menu-list__profile media">
+            <div class="media-left">
+              <figure class="image">
+                <img src="<%= user.avatar_url%>">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-5 font-color-white">
+                <%= user.username %>
+              </p>
+            </div>
+          </div>
+          <div class="menu-list__main is-uppercase has-text-left">
+            <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
+            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i> Members</a></li>
+            <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i> Database</a></li>
+            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i> Statistics</a></li>
+            <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
+          </div>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-white pd-2">
+    <div class="wrapper">
+      <div class="tile is-ancestor has-text-centered">
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title"><%= ideas.length - 1%></p>
+                <p class="subtitle">Users</p>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title"><%=length%></p>  
+              <p class="subtitle">Total Ideas</p>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title"><%= favIdeaCounter %></p>
+                <p class="subtitle">Favorite Idea</p>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title"><%=length - favIdeaCounter%></p>
+                <p class="subtitle">General Idea</p>
+            </article>
+        </div>
+      </div>
+        <% ideas.forEach(idea => { %>
+            <% idea['ideas'].forEach(uniqueIdea => { %>
+              <% if(uniqueIdea.favIdea != true) { %>
+                <div class="box">
+                  <article class="media">
+                    <div class="media-left">
+                      <figure class="image is-64x64">
+                        <img src="graphic-design.svg" alt="Image" id="box_image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <div class="content">
+                      <p>
+                        <strong><%= uniqueIdea.title%></strong>@<small><%= idea['username'] %></small>
+                        <br> 
+                        <%= uniqueIdea.description%>
+                      </p>
+                      </div>
+                      <nav class="level is-mobile">
+                          <div class="level-left">
+                            <form action="/favIdea/<%= uniqueIdea._id %>" method="GET">
+                              <a class="level-item" aria-label="reply">
+                                <input type="image" src="hearts.svg" class="image is-24x24" id="hearts">
+                              </a>
+                            </form>
+                            <a class="level-item" href="/editIdea/<%= uniqueIdea._id %>" aria-label="retweet">
+                              <img src="writing.svg" class="image is-24x24">
+                            </a>
+                        
+                            <form action="/deleteIdea/<%= uniqueIdea._id%>?_method=DELETE" method="POST" id="admin_delete">
+                              <a class="level-item" aria-label="like">
+                                <input type="image" src="bin.svg" class="image is-24x24"></input>
+                              </a>      
+                            </form>
+                          </div>
+                      </nav>
+                    </div>
+                  </article>
+                </div>
+              <% }else { %>
+                <% %>
+                <div class="box">
+                  <article class="media">
+                    <div class="media-left">
+                      <figure class="image is-64x64">
+                        <img src="positive-vote.svg" alt="Image" id="box_image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <div class="content">
+                      <p>
+                        <strong><%= uniqueIdea.title%></strong>@<small><%= idea['username'] %></small>
+                        <br> 
+                        <%= uniqueIdea.description%>
+                      </p>
+                      </div>
+                      <nav class="level is-mobile">
+                          <div class="level-left">
+                            <form action="/unFavIdea/<%= uniqueIdea._id %>" method="GET">
+                              <a class="level-item" aria-label="reply">
+                                <input type="image" src="negative-vote.svg" class="image is-24x24" id="hearts">
+                              </a>
+                            </form>
+                            <a class="level-item" href="/editIdea/<%= uniqueIdea._id %>" aria-label="retweet">
+                              <img src="writing.svg" class="image is-24x24">
+                            </a>
+                        
+                            <form action="/deleteIdea/<%= uniqueIdea._id%>?_method=DELETE" method="POST" id="admin_delete">
+                              <a class="level-item" aria-label="like">
+                                <input type="image" src="bin.svg" class="image is-24x24"></input>
+                              </a>      
+                            </form>
+                          </div>
+                      </nav>
+                    </div>
+                  </article>
+                </div>
+              <% } %>
+            <% }) %>
+        <% }) %>
+    </div>
+  </div>
+</div>
