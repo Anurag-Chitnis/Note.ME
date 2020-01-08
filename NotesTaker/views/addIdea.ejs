@@ -18,9 +18,13 @@
           </div>
           <div class="menu-list__main is-uppercase has-text-left">
             <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
-            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i> Members</a></li>
-            <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i> Database</a></li>
-            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i> Statistics</a></li>
+            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i>Add note</a></li>
+            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i>Edit Avatar</a></li>
+            <% if (user.username == "admin_12245") { %>
+              <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i>User info</a></li>
+            <% }else { %>
+              <li><a href="/trash" class="subtitle is-7"><i class="fas fa-database"></i>Trash can</a></li>
+            <% } %>
             <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
           </div>
         </ul>

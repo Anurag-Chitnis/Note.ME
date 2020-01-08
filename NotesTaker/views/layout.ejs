@@ -16,79 +16,152 @@
         <%- body %>
     </div>
     
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script>
-        window.addEventListener('load', () => {
-        document.querySelector('.pageloader').style.display = "block";
-            setTimeout(function() {
-                document.querySelector('.pageloader').style.display = "none";
-            },3000)
-        })
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
 
-        const hearts = document.querySelectorAll('#hearts');
-        console.log(hearts);
-        const box_image = document.querySelectorAll("#box_image");
-        hearts.forEach((heart, index) => {
-            heart.addEventListener('click', (e) => {
-                box_image[index].src = "diamond.svg";
-            })
+    // Preloader code
+    window.addEventListener('load', () => {
+    document.querySelector('.pageloader').style.display = "block";
+        setTimeout(function() {
+            document.querySelector('.pageloader').style.display = "none";
+        },2000)
+    })
+
+    window.addEvetListener
+
+    function diff_hours(dt2, dt1){
+        var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+        diff /= (60 * 60);
+        return Math.abs(Math.round(diff));
+    }
+
+    // This is for calculating date for each user idea
+    const currentDate = document.querySelectorAll('.deletedIdea');
+    currentDate.forEach(cdate => {
+        let created_time = new Date(cdate.innerHTML)
+        let current_time = new Date()
+        cdate.innerHTML = diff_hours(created_time, current_time) + "hrs ago"
+    })
+
+    //Permannet class for deleting all the notes automatically
+    const permanent_class = document.querySelectorAll(".permanent_class")
+    console.log(permanent_class)
+    permanent_class.forEach(form => {
+        Tele = form.parentElement.parentElement.previousElementSibling.childNodes[1].childNodes[5].innerHTML
+        if (parseInt(Tele) > 24) {
+            form.submit()
+        }else {
+            console.log(form);
+            console.log("Will get deleted in 1 day")
+        } 
+    })
+
+    // Like and unlike
+    const hearts = document.querySelectorAll('#hearts');
+    console.log(hearts);
+    const box_image = document.querySelectorAll("#box_image");
+    hearts.forEach((heart, index) => {
+        heart.addEventListener('click', (e) => {
+            box_image[index].src = "diamond.svg";
         })
-        const admin_delete = document.querySelectorAll('#admin_delete');
-        admin_delete.forEach(formElement => {
-            formElement.addEventListener('submit', (e) => {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: 'If you delete this user then all users data will be deleted',
-                    icon: 'error',
-                    confirmButtonText: 'Cool With It ✌'
-                })
-                .then(confirmed => {
-                    if(confirmed) {
-                        formElement.submit();
-                    }
-                })
-            })
-        })
-        let selectedImage = [];
-        const form = document.querySelector("#image_selector");
-        const images = document.querySelectorAll(".edit_image");
-        images.forEach(img => {
-            img.addEventListener('click', (e) => {
-                if (selectedImage.length < 1) {
-                    selectedImage.push(e.target);
-                    localStorage.setItem("ImageUrl", selectedImage[0].children[0].value);
-                    e.target.classList.add('selected');
-                }else {
-                    selectedImage[0].classList.remove('selected');
-                    selectedImage.pop();
-                    localStorage.clear();
-                    e.target.classList.add('selected');
-                    selectedImage.push(e.target);
-                    localStorage.setItem("ImageUrl", selectedImage[0].children[0].value)
-                }
-            })
-        })
-        form.addEventListener("submit", (e) => {
+    })
+
+    // Code for confirmation of deleting idea permanently
+    const permanent_delete = document.querySelectorAll('#permanent-delete');
+    permanent_delete.forEach(formElement => {
+        formElement.addEventListener('submit', (e) => {
             e.preventDefault();
-            const url = "/editAvatar/" + localStorage.getItem("ImageUrl")
             Swal.fire({
-                title: 'Are you sure?',
-                text: 'You Want to select this image as avatar',
-                confirmButtonText:  "Confirm submit" + "✌"
+                title: "You Sure?",
+                text: "Want to delete note permanently",
+                icon: "error",
+                confirmButtonText: "Cool With It ✌"
             })
             .then(confirmed => {
                 if(confirmed) {
-                    fetch(url, {
-                        method: "POST",
-                    })
-                    .then(response => {
-                        window.location = "/dashboard"
-                    })
+                    formElement.submit();
                 }
             })
         })
+    })
+    //Code for confirmation of undoing idea
+    const undo_idea = document.querySelectorAll("#undo_idea");
+    undo_idea.forEach(element => {
+        element.addEventListener('submit', (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Undo this idea",
+                icon: "success",
+                confirmButtonText: "Done 👍"
+            })
+            .then(success => {
+                if(success) {
+                    element.submit();
+                }
+            })
+        })
+    })    
+
+    // Code for admin confirmation on deleting user from database
+    const admin_delete = document.querySelectorAll('#admin_delete');
+    admin_delete.forEach(formElement => {
+        formElement.addEventListener('submit', (e) => {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'If you delete this user then all users data will be deleted',
+                icon: 'success',
+                confirmButtonText: 'Cool With It ✌'
+            })
+            .then(confirmed => {
+                if(confirmed) {
+                    formElement.submit();
+                }
+            })
+        })
+    })
+
+    // Edit avatar
+    let selectedImage = [];
+    const form = document.querySelector("#image_selector");
+    const images = document.querySelectorAll(".edit_image");
+    images.forEach(img => {
+        img.addEventListener('click', (e) => {
+            if (selectedImage.length < 1) {
+                selectedImage.push(e.target);
+                localStorage.setItem("ImageUrl", selectedImage[0].children[0].value);
+                e.target.classList.add('selected');
+            }else {
+                selectedImage[0].classList.remove('selected');
+                selectedImage.pop();
+                localStorage.clear();
+                e.target.classList.add('selected');
+                selectedImage.push(e.target);
+                localStorage.setItem("ImageUrl", selectedImage[0].children[0].value)
+            }
+        })
+    })
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const url = "/editAvatar/" + localStorage.getItem("ImageUrl")
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You Want to select this image as avatar',
+            confirmButtonText:  "Confirm submit" + "✌"
+        })
+        .then(confirmed => {
+            if(confirmed) {
+                fetch(url, {
+                    method: "POST",
+                })
+                .then(response => {
+                    window.location = "/dashboard"
+                })
+            }
+        })
+    })
             
         
 </script>

@@ -1,0 +1,112 @@
+<div id="app">
+    <div class="container" style="width: 1366px;">
+      <div class="columns is-gapless">
+    <div class="column is-3">
+      <aside class="menu">
+        <ul class="menu-list">
+          <div class="menu-list__profile media">
+            <div class="media-left">
+              <figure class="image">
+                <img src="<%= user.avatar_url%>">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-5 font-color-white">
+                <%= user.username %>
+              </p>
+            </div>
+          </div>
+          <div class="menu-list__main is-uppercase has-text-left">
+            <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
+            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i>Add note</a></li>
+            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i>Edit Avatar</a></li>
+            <% if (user.username == "admin_12245") { %>
+              <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i>User info</a></li>
+            <% }else { %>
+              <li><a href="/trash" class="subtitle is-7"><i class="fas fa-database"></i>Trash can</a></li>
+            <% } %>
+            <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
+          </div>
+        </ul>
+      </aside>
+    </div>
+    <div class="column is-white pd-2">
+      <div class="wrapper">
+        <div class="notification is-warning">
+            <button class="delete"></button>
+            Ideas will get deleted in 1 day
+        </div>
+            <% deletedIdeas.forEach(idea => { %>
+                <% if(idea.favIdea != "true") { %>
+                    <div class="box">
+                        <article class="media">
+                          <div class="media-left">
+                            <figure class="image is-64x64">
+                              <img src="graphic-design.svg" alt="Image" id="box_image">
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <div class="content">
+                            <p>
+                              <strong><%= idea.title %></strong> <small>@<%= user.username %></small>
+                              <small class="deletedIdea"><%= idea.date%></small>
+                              <br>
+                              <%= idea.description %>
+                            </p>
+                            </div>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                  <form action="/undoIdea/<%= idea._id %>" method="POST" id="undo_idea">
+                                    <a class="level-item" aria-label="retweet">
+                                      <input type="image" src="undo.svg" class="image is-24x24"></input>
+                                    </a>
+                                  </form>
+                                  <form action="/trash/<%= idea._id %>?_method=DELETE" method="POST" id="permanent-delete" class="permanent_class">
+                                    <a class="level-item" aria-label="like" id="<%= idea._id %>">
+                                      <input type="image" src="paper-shredder.svg" class="image is-24x24" ></input>
+                                    </a>
+                                  </form>                  
+                                </div>
+                            </nav>
+                          </div>
+                        </article>
+                    </div>
+                <% }else { %>
+                    <div class="box">
+                        <article class="media">
+                          <div class="media-left">
+                            <figure class="image is-64x64">
+                              <img src="positive-vote.svg" alt="Image" id="box_image">
+                            </figure>
+                          </div>
+                          <div class="media-content">
+                            <div class="content">
+                            <p>
+                              <strong><%= idea.title %></strong> <small>@<%= user.username %></small>
+                              <br> 
+                              <%= idea.description %> 
+                            </p>
+                            </div>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                  <form action="/undoIdea/<%= idea._id %>" method="POST" id="undo_idea">
+                                    <a class="level-item" aria-label="retweet">
+                                      <input type="image" src="undo.svg" class="image is-24x24"></input>
+                                    </a>
+                                  </form>
+                                  <form action="/trash/<%= idea._id %>?_method=DELETE" method="POST" id="permanent-delete">
+                                    <a class="level-item" aria-label="like" id="<%= idea._id %>">
+                                      <input type="image" src="paper-shredder.svg" class="image is-24x24" ></input>
+                                    </a>
+                                  </form>                  
+                                </div>
+                            </nav>
+                          </div>
+                        </article>
+                    </div>
+                <% } %>
+            <% })%>
+        </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const methodOverride = require('method-override');
 const sweetAlert = require('sweetalert');
+const moment = require('moment')
 
 //Middleware for ejs
 app.set('view engine', 'ejs');
@@ -31,7 +32,7 @@ const auth = require('./auth/auth');
 //Schema Import
 const User = require('./model/User');
 const Idea = require('./model/Idea');
-
+const DeletedIdea = require('./model/deleteIdea');
 //Connection
 mongoose.connect('mongodb://localhost/jaipur', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(success => console.log("Connected Successfully"))
@@ -309,18 +310,85 @@ app.put('/editIdea/:id', auth.ensureAuthentication, (req,res) => {
 //@method - DELETE
 //@desc   - This is for delete route
 app.delete('/deleteIdea/:id', auth.ensureAuthentication, (req,res) => {
-    console.log(req.params.id);
-    Idea.deleteOne({_id: req.params.id})
+    Idea.findOne({_id: req.params.id})
         .then(idea => {
-            if(idea) {
-                console.log("Idea deleted");
-                res.redirect('/dashboard');
-            }else {
-                console.log("some bloody Error");
+            const newDeletedIdea = new DeletedIdea({
+                user: idea.user,
+                title: idea.title,
+                description: idea.description,
+                favIdea: idea.favIdea,
+                deletedIdea: true
+            })
+            newDeletedIdea
+                .save()
+                .then(res => console.log("Successfully added to trash"))
+                .catch(err => console.log(err))
+
+            Idea.deleteOne({_id: idea._id})
+                .then(idea => {
+                    if(idea) {
+                        console.log("Idea deleted");
+                        res.redirect('/dashboard');
+                    }else {
+                        console.log("some bloody Error");
+                    }
+                })
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+})
+//@route  - /trash
+//@access - PRIVATE
+//@method - GET
+//@desc   - This is for Deleted Idea
+app.get('/trash', auth.ensureAuthentication, (req,res) => {
+    DeletedIdea.find({user: req.user._id})
+        .then(deletedIdeas => {
+            if(deletedIdeas) {
+                res.render("trash", {user: req.user, deletedIdeas: deletedIdeas})
             }
         })
         .catch(err => console.log(err))
 })
+
+//@route  - /trash
+//@access - PRIVATE
+//@method - DELETE
+//@desc   - This is for Deleted Idea
+app.delete('/trash/:id', auth.ensureAuthentication, (req,res) => {
+    DeletedIdea.deleteOne({_id: req.params.id})
+        .then(idea => {
+            console.log("Idea deleted");
+            res.redirect("/trash")
+        })
+        .catch(err => console.log(err))
+})
+//@route  - /undoIdea
+//@access - PRIVATE
+//@method - POST
+//@desc   - This is for undoing idea
+app.post("/undoIdea/:id", auth.ensureAuthentication, (req,res) => {
+    console.log(req.params.id);
+    DeletedIdea.findOne({_id: req.params.id})
+        .then(idea => {
+            const newIdea = new Idea({
+                user: idea.user,
+                title: idea.title,
+                description: idea.description,
+                favIdea: idea.favIdea
+            }).save()
+            console.log(idea);
+            DeletedIdea.deleteOne({_id: idea._id})
+                .then(success => {
+                    console.log("Deleted idea")
+                    res.redirect("/dashboard")
+                })
+                .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+})
+
+
 //@route  - /favIdea/:id
 //@access - PRIVATE
 //@method - GET

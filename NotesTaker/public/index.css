@@ -10,6 +10,16 @@
   padding: 0px;
 }
 
+.deletedIdea {
+  color: #aaa;
+  justify-self: flex-end;
+  float: right;
+}
+
+#undo_idea {
+  margin-right: 1.2em;
+}
+
 .edit_image:hover {
   box-shadow: 0 0.5rem 0.5rem rgba(0,0,0,0.3);
 }
