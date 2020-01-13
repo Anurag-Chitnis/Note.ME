@@ -22,13 +22,64 @@
 
     // Preloader code
     window.addEventListener('load', () => {
-    document.querySelector('.pageloader').style.display = "block";
+        document.querySelector('.pageloader').style.display = "block";
         setTimeout(function() {
             document.querySelector('.pageloader').style.display = "none";
         },2000)
     })
 
-    window.addEvetListener
+    window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('click', (e) => {
+            if (e.target.id == "change-mode" && e.target.classList.contains("night-mode")) {
+                e.target.src = "sunny.svg";
+                e.target.classList = "light-mode";
+                sessionStorage.setItem("Color_Schema", "night_mode");             
+                // For dark mode
+                DarkMode();
+
+            }else if(e.target.id == "change-mode" && e.target.classList.contains("light-mode")) {
+                e.target.src = "night.svg"
+                e.target.classList = "night-mode"
+                sessionStorage.setItem("Color_Schema", "light_mode")
+                // For light mode
+                LightMode();
+            }
+        })
+        if (sessionStorage.getItem("Color_Schema") == "night_mode") {
+            DarkMode();
+            document.getElementById('change-mode').src = "sunny.svg"
+        }else {
+            LightMode();
+            document.getElementById('change-mode').src = "night.svg"
+        }
+
+    })
+
+
+
+
+    const DarkMode = () => {
+        let root = document.documentElement;
+        root.style.setProperty('--main-background-color', "#27293D")
+        root.style.setProperty('--card-color', '#27293D')
+        root.style.setProperty('--alpha-channel', "rgba(10,10,10,.8)")
+        root.style.setProperty('--main-font-color', '#ddd')
+        root.style.setProperty('--divider', '#8c87f5')
+        root.style.setProperty('--navigation-color-primary', '#40d0bc')
+        root.style.setProperty('--navigation-color-secondary', '#3273dc')
+    }
+
+    const LightMode = () => {
+        let root = document.documentElement;
+        root.style.setProperty('--main-background-color', '#fff')
+        root.style.setProperty('--card-color', '#fff')
+        root.style.setProperty('--alpha-channel', "rgba(10,10,10,.1)")
+        root.style.setProperty('--main-font-color', '#333')
+        root.style.setProperty('--divider', '#fdefef')
+        root.style.setProperty('--navigation-color-primary', '#ec008c')
+        root.style.setProperty('--navigation-color-secondary', '#fc6767')
+    }
+    
 
     function diff_hours(dt2, dt1){
         var diff =(dt2.getTime() - dt1.getTime()) / 1000;

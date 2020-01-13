@@ -32,11 +32,16 @@
     </div>
     <div class="column is-white pd-2">
       <div class="wrapper">
-        <div class="notification is-primary">
-            <button class="delete"></button>
-            Welcome to the world of programmers, this app is specifically created for those 
-            who are interested to keep notes and want to play around
+        <div class="wrapper_main">
+          <div class="wrapper_content">
+            <h1 class="title custom-color">Dashboard</h1>
+          </div>
+          <div class="media-left night-mode">
+            <img id="change-mode" class="night-mode" src="night.svg" alt="this is for night mode">
+          </div>
         </div>
+        
+        <hr>
 
         <div class="box">
           <article class="media">
@@ -47,7 +52,7 @@
             </div>
             <div class="media-content">
               <div class="content">
-              <p>
+              <p class="content_para">
                 <strong><%= user.username %></strong> <small>@<%= user.username %></small>
                 <br> 
                 <% if(user.username !== "admin_12245") { %>
@@ -125,7 +130,7 @@
                   </div>
                   <div class="media-content">
                     <div class="content">
-                    <p>
+                    <p class="content_para">
                       <strong><%= idea.title%></strong> <small>@<%= user.username %></small><small class="deletedIdea"><%= idea.date %></small>
                       <br> 
                       <%= idea.description %>
@@ -162,7 +167,7 @@
                   </div>
                   <div class="media-content">
                     <div class="content">
-                      <p>
+                      <p class="content_para">
                         <strong><%= idea.title%></strong> <small>@<%= user.username %></small><small class="deletedIdea"><%= idea.date %></small>
                         <br> 
                         <%= idea.description %>

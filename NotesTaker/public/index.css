@@ -1,13 +1,90 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Oswald&display=swap');
 
 
 *{
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+
+}
+
+:root {
+  /* Generic Colors */
+  --card-color: #fff;
+  --divider: #fdefef;
+  --main-font-color: #333;
+  --main-background-color: #fff;
+  --selected-card-color-primary: #6b84d6;
+  --selected-card-color-secondary: #6c6ef0;
+  --navigation-color-primary: #ec008c;
+  --navigation-color-secondary: #fc6767;
+  --alpha-channel: rgba(10,10,10,.1); 
+}
+
+.box {
+  background: var(--card-color);
+  box-shadow: 0 0.5em 1em -0.125em var(--alpha-channel), 0 0 0 1px rgba(10,10,10,.02)
+}
+
+.selected {
+  background: linear-gradient(to left top, var(--selected-card-color-primary), var(--selected-card-color-secondary));
+  animation: selected_animation 2s ease infinite;
+  box-shadow: 0 0.3rem .2rem rgba(0,0,0,0.3);
+}
+
+.wrapper {
+  padding: 1em 2em 2em 2em;
+  background-color: var(--main-background-color);
+  min-height: 100vh;
+}
+
+#app .menu{
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(to bottom right, var(--navigation-color-primary), var(--navigation-color-secondary));
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+
+
+.content_para {
+  color: var(--main-font-color)
+}
+
+strong {
+  color: var(--main-font-color)
+}
+
+small {
+  color: var(--main-font-color);
+}
+
+#text {
+  color: var(--main-font-color);
+}
+
+
+.custom-color{
+  font-size: 2.5em;
+  color: var(--main-font-color);
+}
+
+hr {
+  margin-top: 16px;
+  background: var(--divider);
+}
+
+.night-mode {
+  font-size: 6px;
+  text-align: right;
+}
+
+.wrapper_main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .deletedIdea {
@@ -34,16 +111,11 @@ input[name ='avatar_image'] {
     width: 128px;
 }
 
-.selected {
-  background: linear-gradient(to left top, #ec008c, #fc6767);
-  animation: selected_animation 2s ease infinite;
-  box-shadow: 0 0.3rem .2rem rgba(0,0,0,0.3);
-}
-
 .divider {
   display: flex;
   color: #eee;
 }
+
 .divider:before, .divider:after {
   content: "";
   flex: 1;
@@ -71,6 +143,7 @@ input[name ='avatar_image'] {
   z-index: 1000;
   display: none;
 }
+
 .lds-ripple {
   display: inline-block;
   position: relative;
@@ -79,6 +152,7 @@ input[name ='avatar_image'] {
   top: 50%;
   left: 50%;
 }
+
 .lds-ripple div {
   position: absolute;
   border: 4px solid #dfc;
@@ -113,13 +187,13 @@ input[name ='avatar_image'] {
 
 
 .header {
-    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+  background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
 
 #hearts {
@@ -148,7 +222,6 @@ img {
     width: 8em;
 }
 
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,800");
 html {
   height: 100%;
 }
@@ -167,17 +240,6 @@ html {
 #app .container,
 #app .columns {
   height: 100%;
-}
-
-.wrapper {
-  padding: 1em 2em 2em 2em;
-}
-
-#app .menu{
-  height: 100%;
-  background: linear-gradient(to bottom right, #ec008c, #fc6767);
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
 }
 
 .menu-list__profile {
