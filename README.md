@@ -15,6 +15,7 @@
 13. Edit username through admin
 14. Delete user 
 15. View all users idea with favIdea count using aggregation pipelining
+16. Dark theme
 # Next Features
 1. Email Confirmation 
 2. Mongodb chat 
