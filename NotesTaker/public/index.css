@@ -17,14 +17,17 @@
   --main-background-color: #fff;
   --selected-card-color-primary: #6b84d6;
   --selected-card-color-secondary: #6c6ef0;
-  --navigation-color-primary: #ec008c;
+  --navigation-color-primary: hsl(324, 100%, 46%);
   --navigation-color-secondary: #fc6767;
-  --alpha-channel: rgba(10,10,10,.1); 
+  --alpha-channel: rgba(10,10,10,.1);
+  --preloader--primary: #ec008c;
+  --preloader--secondary: #fc6767; 
 }
 
 .box {
   background: var(--card-color);
-  box-shadow: 0 0.5em 1em -0.125em var(--alpha-channel), 0 0 0 1px rgba(10,10,10,.02)
+  box-shadow: 0 0.5em 1em -0.125em var(--alpha-channel), 0 0 0 1px rgba(10,10,10,.02);
+  transition: all ease 1s;
 }
 
 .selected {
@@ -37,6 +40,7 @@
   padding: 1em 2em 2em 2em;
   background-color: var(--main-background-color);
   min-height: 100vh;
+  transition: background 1s ease;
 }
 
 #app .menu{
@@ -45,6 +49,7 @@
   background: linear-gradient(to bottom right, var(--navigation-color-primary), var(--navigation-color-secondary));
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  transition: background 10s ease;
 }
 
 
@@ -136,7 +141,7 @@ input[name ='avatar_image'] {
 
 
 .pageloader {
-  background: linear-gradient(to right bottom, #ec008c, #fc6767);
+  background: linear-gradient(to bottom right, var(--preloader--primary), var(--preloader--secondary));
   height: 100vh;
   position: fixed;
   width: 100%;
@@ -214,7 +219,7 @@ input[name ='avatar_image'] {
 }
 
 .hero {
-    background-color: #fff !important;
+  background-color: #fff !important;
 }
 
 img {

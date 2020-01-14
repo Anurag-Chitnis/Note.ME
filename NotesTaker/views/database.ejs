@@ -35,26 +35,26 @@
       <div class="tile is-ancestor has-text-centered">
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title"><%= ideas.length - 1%></p>
-                <p class="subtitle">Users</p>
+                <p class="title content_para"><%= ideas.length - 1%></p>
+                <p class="subtitle content_para">Users</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title"><%=length%></p>  
-              <p class="subtitle">Total Ideas</p>
+                <p class="title content_para"><%=length%></p>  
+              <p class="subtitle content_para">Total Ideas</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title"><%= favIdeaCounter %></p>
-                <p class="subtitle">Favorite Idea</p>
+                <p class="title content_para"><%= favIdeaCounter %></p>
+                <p class="subtitle content_para">Favorite Idea</p>
             </article>
         </div>
         <div class="tile is-parent">
-            <article class="tile is-child box">
-                <p class="title"><%=length - favIdeaCounter%></p>
-                <p class="subtitle">General Idea</p>
+            <article class="tile is-child box content_para">
+                <p class="title content_para"><%=length - favIdeaCounter%></p>
+                <p class="subtitle content_para">General Idea</p>
             </article>
         </div>
       </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="media-content">
                       <div class="content">
-                      <p>
+                      <p class="content_para">
                         <strong><%= uniqueIdea.title%></strong>@<small><%= idea['username'] %></small>
                         <br> 
                         <%= uniqueIdea.description%>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="media-content">
                       <div class="content">
-                      <p>
+                      <p class="content_para">
                         <strong><%= uniqueIdea.title%></strong>@<small><%= idea['username'] %></small>
                         <br> 
                         <%= uniqueIdea.description%>

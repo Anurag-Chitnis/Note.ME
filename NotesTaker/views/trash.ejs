@@ -47,7 +47,7 @@
                           </div>
                           <div class="media-content">
                             <div class="content">
-                            <p>
+                            <p class="content_para">
                               <strong><%= idea.title %></strong> <small>@<%= user.username %></small>
                               <small class="deletedIdea"><%= idea.date%></small>
                               <br>
@@ -81,8 +81,9 @@
                           </div>
                           <div class="media-content">
                             <div class="content">
-                            <p>
+                            <p class="content_para">
                               <strong><%= idea.title %></strong> <small>@<%= user.username %></small>
+                              <small class="deletedIdea"><%= idea.date%></small>
                               <br> 
                               <%= idea.description %> 
                             </p>
