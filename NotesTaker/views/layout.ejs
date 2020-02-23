@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="pageloader not-active">
+        <!-- <div class="pageloader not-active">
             <div class="lds-ripple"><div></div><div></div></div>
-          </div>
+          </div> -->
         <%- body %>
     </div>
     
@@ -21,12 +21,12 @@
 <script>
 
     // Preloader code
-    window.addEventListener('load', () => {
-        document.querySelector('.pageloader').style.display = "block";
-        setTimeout(function() {
-            document.querySelector('.pageloader').style.display = "none";
-        },2000)
-    })
+    // window.addEventListener('load', () => {
+    //     document.querySelector('.pageloader').style.display = "block";
+    //     setTimeout(function() {
+    //         document.querySelector('.pageloader').style.display = "none";
+    //     },2000)
+    // })
 
     window.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('click', (e) => {
