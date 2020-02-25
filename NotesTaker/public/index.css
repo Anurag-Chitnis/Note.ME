@@ -31,6 +31,22 @@
   transition: all ease 1s;
 }
 
+.is-pink {
+  background:#FC427B;
+  color: #fff;
+}
+
+.is-pink:hover {
+  background:rgb(243, 76, 126);
+  color: #fff;
+}
+
+.other_half {
+  background: url("notes.svg") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 .selected {
   background: linear-gradient(to left top, var(--selected-card-color-primary), var(--selected-card-color-secondary));
   animation: selected_animation 2s ease infinite;
@@ -506,4 +522,46 @@ i,svg {
 
 .modal {
   display: none;
+}
+
+.nav-cir {
+  display: flex !important;
+  flex-direction: column;
+  width: 4.5rem !important;
+  height: 4.5rem !important;
+  margin: auto;
+  font-size: 0.7rem !important;
+  border-radius: 50% !important;
+
+  justify-content: center;
+  transition: all 250ms ease;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+.nav-cir svg {
+  height: 2.4rem !important;
+  width: auto !important;
+}
+.nav-cir:hover {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+.menu-brick {
+  width: 6rem !important;
+}
+.userimg {
+  margin: 3rem auto;
+}
+.userimg img {
+  width: 5rem;
+  margin: auto;
+}
+.logout {
+  margin: auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.logout svg {
+  width: 2.4rem !important;
+  height: auto !important;
 }

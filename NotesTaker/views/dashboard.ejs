@@ -2,33 +2,7 @@
     <div class="container" style="width: 1366px;">
       <div class="columns is-gapless">
     <div class="column is-3">
-      <aside class="menu">
-        <ul class="menu-list">
-          <div class="menu-list__profile media">
-            <div class="media-left">
-              <figure class="image">
-                <img src="<%= user.avatar_url%>">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-5 font-color-white">
-                <%= user.username %>
-              </p>
-            </div>
-          </div>
-          <div class="menu-list__main is-uppercase has-text-left">
-            <li><a href="/dashboard" class="subtitle is-7 active"><i class="fas fa-cubes"></i>Dashboard</a></li>
-            <li><a href="/addIdea" class="subtitle is-7"><i class="fas fa-user"></i>Add note</a></li>
-            <li><a href="/editAvatar" class="subtitle is-7"><i class="far fa-chart-bar"></i>Edit Avatar</a></li>
-            <% if (user.username == "admin_12245") { %>
-              <li><a href="/database" class="subtitle is-7"><i class="fas fa-database"></i>User info</a></li>
-            <% }else { %>
-              <li><a href="/trash" class="subtitle is-7"><i class="fas fa-database"></i>Trash can</a></li>
-            <% } %>
-            <li class="menu-list__outlier"><a href="/logout" class="subtitle is-7"><i class="fas fa-cog"></i> Logout</a></li>
-          </div>
-        </ul>
-      </aside>
+      <%- include ('./partials/navbar.ejs') %>
     </div>
     <div class="column is-white pd-2">
       <div class="wrapper">
@@ -43,42 +17,7 @@
         
         <hr>
 
-        <div class="box">
-          <article class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img src="graphic-design.svg" alt="Image">
-              </figure>
-            </div>
-            <div class="media-content">
-              <div class="content">
-              <p class="content_para">
-                <strong><%= user.username %></strong> <small>@<%= user.username %></small>
-                <br> 
-                <% if(user.username !== "admin_12245") { %>
-                  Welcome <%= user.username %> this is how your message looks when you post it.
-                  I am excited to see what you do next 
-                <% }else { %>
-                  Welcome <%= user.username %> you have alrights to add or delete user from this application
-                <% } %>
-              </p>
-              </div>
-              <nav class="level is-mobile">
-                  <div class="level-left">
-                    <a class="level-item" aria-label="reply">
-                      <img src="hearts.svg" class="image is-24x24">
-                    </a>
-                    <a class="level-item" aria-label="retweet">
-                      <img src="writing.svg" class="image is-24x24">
-                    </a>
-                    <a class="level-item" aria-label="like">
-                      <img src="bin.svg" class="image is-24x24">
-                    </a>
-                  </div>
-              </nav>
-            </div>
-          </article>
-        </div>
+        <%- include ("./partials/defaultCard.ejs") %>
 
         <% if(user.username == "admin_12245") { %>
             <% allusers.forEach(eachUser => { %>
@@ -87,7 +26,7 @@
                   <article class="media">
                     <div class="media-left">
                       <figure class="image is-64x64">
-                        <img src="graphic-design.svg" alt="Image" id="box_image">
+                        <img src="<%= eachUser.avatar_url%>" alt="Image" id="box_image">
                       </figure>
                     </div>
                     <div class="media-content">

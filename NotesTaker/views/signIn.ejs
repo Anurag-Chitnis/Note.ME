@@ -1,37 +1,67 @@
-<section class="hero is-success is-fullheight">
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="column is-6 is-offset-3">
-                <h3 class="title has-text-black">Sign In</h3>
-                <hr class="login-hr">
-                <div class="box">
-                    <figure class="avatar">
-                        <img src="network.svg">
-                    </figure>
-                    <form action="/signIn" method="POST">
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-large" required type="text" name="username" placeholder="Your Username">
-                            </div>
-                        </div>
-                
+<div class="is-fullpage has-content-centered">
+    <div class="columns is-marginless is-fullpage">
+	<div class="column has-content-vspaced has-padding-large has-background-white">
+		<div>
+			<p class="title has-text-centered has-text-weight-light">
+				Sign in
+			</p>
+			<p class="subtitle has-text-centered has-text-weight-light">
+				or <a href="/signUp">create account</a>
+			</p>
+		</div>
 
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-large" required type="password" name="password" placeholder="Your Password">
-                            </div>
-                        </div>
-                       
-                        </div>
-                        <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-                    </form>
-                </div>
-                <p class="has-text-grey">
-                    <a href="/signUp">Sign Up</a> &nbsp;·&nbsp;
-                    <a href="/forgot/password">Forgot Password</a> &nbsp;·&nbsp;
-                    <a href="../">Need Help?</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+		<div class="columns is-mobile is-centered">
+			<div class="column is-10-mobile is-8-fullhd">
+				<form method="POST" action="/signIn">
+					<h6 class="title is-6 has-text-centered has-text-grey">Use your credentials to access your account.</h6>
+					<div class="section">
+						<div class="field">
+							<label class="label">Email address</label>
+							<div class="control has-icons-left ">
+                                <input class="input is-medium is-muted" required type="text" name="username" placeholder="Enter Username">
+								<span class="icon is-small is-left">
+									<i class="fas fa-envelope"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Password</label>
+							<div class="control has-icons-left has-icons-right">
+                                <input class="input is-medium is-muted" required type="password" name="password" placeholder="Your Password">
+								<span class="icon is-small is-left">
+									<i class="fas fa-lock"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fas fa-eye"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control has-addons">
+								<label class="checkbox">
+									<input type="checkbox">
+									Remember me
+								</label>
+								<a class="title is-7 has-text-grey" href="#">Forgot password ?</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-grouped">
+						<button class="button is-medium is-pink is-fullwidth is-medium">Sign in</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<p class="has-text-centered has-text-grey">
+			Don't have account yet? <a href="/signUp">Sign up</a>
+		</p>
+	</div>
+	<div class="column is-half is-hidden-mobile has-padding-large has-content-bottom other_half">
+	</div>
+</div>
+
+  </div>

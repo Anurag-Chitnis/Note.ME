@@ -1,46 +1,78 @@
-<section class="hero is-success is-fullheight">
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="column is-6 is-offset-3">
-                <h3 class="title has-text-black">Sign Up</h3>
-                <hr class="login-hr">
-                <div class="box">
-                    <figure class="avatar">
-                        <img src="network.svg">
-                    </figure>
-                    <form action="/signUp" method="POST">
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-large" required type="text" name="username" placeholder="Your Username">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-large" required type="email" name="email" placeholder="Your Email">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-large" required type="password" name="password" placeholder="Your Password">
-                            </div>
-                        </div>
+<div class="is-fullpage has-content-centered">
+    <div class="columns is-marginless is-fullpage">
+	<div class="column has-content-vspaced has-padding-large has-background-white">
+		<div>
+			<p class="title has-text-centered has-text-weight-light">
+				Create your account
+			</p>
+			<p class="subtitle has-text-centered has-text-weight-light">
+				or <a href="/signIn">sign in</a>
+			</p>
+		</div>
 
-                        <div class="field">
-                            <div class="control">
-                                <input class="input is-large" required type="password" name="confirm_password" placeholder="Confirm Password">
-                            </div>
-                        </div>
-                       
-                        </div>
-                        <button class="button is-block is-info is-large is-fullwidth">SignUp <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-                    </form>
-                </div>
-                <p class="has-text-grey">
-                    <a href="/signIn">Sign In</a> &nbsp;·&nbsp;
-                    <a href="/forgot/password">Forgot Password</a> &nbsp;·&nbsp;
-                    <a href="../">Need Help?</a>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+		<div class="columns is-mobile is-centered">
+			<div class="column is-10-mobile is-8-fullhd">
+				<form method="POST" action="/signUp">
+					<div class="section is-paddingless-horizontal is-paddingless-top">
+						<div class="field">
+							<label class="label">Username</label>
+							<div class="control">
+								<input class="input is-medium is-muted" type="text"  name="username" placeholder="e.g JohnWick">
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Email address</label>
+							<div class="control has-icons-left ">
+								<input class="input is-medium is-muted" type="email" name="email" placeholder="email@example.com">
+								<span class="icon is-small is-left">
+									<i class="fas fa-envelope"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label">Password</label>
+							<div class="control has-icons-left">
+								<input class="input is-medium is-muted" type="password" name="password" placeholder="Enter Password">
+								<span class="icon is-small is-left">
+									<i class="fas fa-lock"></i>
+								</span>
+							</div>
+						</div>
+						
+						<div class="field">
+							<label class="label">Confirm Password</label>
+							<div class="control has-icons-left">
+								<input class="input is-medium is-muted" type="password" name="confirm_password" placeholder="Confirm Password">
+								<span class="icon is-small is-left">
+									<i class="fas fa-lock"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control">
+								<label class="checkbox">
+									<input type="checkbox">
+									Agree the <a href="">terms and policy</a>.
+								</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="field is-grouped">
+						<button class="button is-medium is-pink is-fullwidth">Sign up</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<p class="has-text-centered has-text-grey">
+			Already have account? <a href="/signIn">Sign in</a>
+		</p>
+	</div>
+	<div class="column is-half is-hidden-mobile has-padding-large has-content-bottom other_half"></div>
+</div>
+
+  </div>

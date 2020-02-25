@@ -1,0 +1,36 @@
+<div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <img src="graphic-design.svg" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+        <p class="content_para">
+          <strong><%= user.username %></strong> <small>@<%= user.username %></small>
+          <br> 
+          <% if(user.username !== "admin_12245") { %>
+            Welcome <%= user.username %> this is how your message looks when you post it.
+            I am excited to see what you do next 
+          <% }else { %>
+            Welcome <%= user.username %> you have alrights to add or delete user from this application
+          <% } %>
+        </p>
+        </div>
+        <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item" aria-label="reply">
+                <img src="hearts.svg" class="image is-24x24">
+              </a>
+              <a class="level-item" aria-label="retweet">
+                <img src="writing.svg" class="image is-24x24">
+              </a>
+              <a class="level-item" aria-label="like">
+                <img src="bin.svg" class="image is-24x24">
+              </a>
+            </div>
+        </nav>
+      </div>
+    </article>
+  </div>

@@ -7,7 +7,6 @@ const expressLayouts = require('express-layouts');
 const passport = require('passport');
 const session = require('express-session');
 const methodOverride = require('method-override');
-
 //Middleware for ejs
 app.set('view engine', 'ejs');
 //Middlware for BodyParser
@@ -24,7 +23,6 @@ app.use(methodOverride('_method'))
 
 require("./config/passport")(passport);
 const auth = require('./auth/auth');
-
 
 //Connection
 mongoose.connect('mongodb://localhost/jaipur', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -50,7 +48,7 @@ const PORT = process.env.PORT || 3000;
 //@method - GET
 //@desc   - This is for home route
 app.get('/', (req,res) => {
-    res.send("Hello this is home page");
+    res.redirect('/signIn')
 });
 
 // User Authentication (SignIn/ SignUp/ forgotPassword) 
@@ -88,7 +86,8 @@ const adminDelete = require('./routes/adminDelete');
 const adminDatabase = require('./routes/adminDatabase');
 //Middlewares
 app.use('/adminDelete', adminDelete);
-app.use('/database', adminDatabase)
+app.use('/database', adminDatabase);
+
 
 //@route  - /logout
 //@access - PRIVATE
