@@ -16,8 +16,11 @@ app.use(bodyParser.json());
 app.use(expressLayouts);
 //Static Folder Config
 app.use(express.static('public'));
+app.use(express.static(__dirname + "\\" +'public' + "\\" + 'Images'))
 app.use('/editIdea', express.static("public"))
+app.use('/editIdea', express.static(__dirname + "\\" +'public' + "\\" + 'Images'))
 app.use('/forgot', express.static('public'))
+
 //Method Override
 app.use(methodOverride('_method'))
 

@@ -62,12 +62,8 @@
   height: 100%;
   width: 25%;
   background: linear-gradient(to bottom right, var(--navigation-color-primary), var(--navigation-color-secondary));
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
   transition: background 10s ease;
 }
-
-
 
 .content_para {
   color: var(--main-font-color)

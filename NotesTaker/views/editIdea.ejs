@@ -6,29 +6,33 @@
     </div>
     <div class="column is-white">
       <div class="wrapper">
-          <div class="box">
-
-              <figure class="avatar center">
-                <img src="<%= user.avatar_url%>" class="center">
-              </figure>
-
-
-              <form action="/editIdea/<%= idea._id %>?_method=PUT" method="POST">
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-large" required type="text" name="title" value="<%= idea.title %>">
-                    </div>
-                </div>
-        
-    
-                <div class="field">
-                    <div class="control">
-                        <textarea class="input is-large" required type="text" name="description"><%= idea.description %></textarea>
-                    </div>
-                </div>
-                <button class="button is-block is-info is-large is-fullwidth">Submit <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-              </form>
+        <div class="wrapper_main">
+          <div class="wrapper_content">
+            <h1 class="title custom-color">Edit Note</h1>
           </div>
+          <div class="media-left night-mode">
+            <img id="change-mode" class="night-mode" src="night.svg" alt="this is for night mode">
+          </div>
+        </div>
+        <hr>
+        <div class="box">
+          <figure class="avatar center">
+            <img src="<%= user.avatar_url%>" class="center">
+          </figure>
+          <form action="/editIdea/<%= idea._id %>?_method=PUT" method="POST">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" required type="text" name="title" value="<%= idea.title %>">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <textarea class="input is-large" required type="text" name="description"><%= idea.description %></textarea>
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Submit <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+          </form>
+        </div>
       </div>
   </div>
 </div>
