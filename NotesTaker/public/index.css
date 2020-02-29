@@ -28,7 +28,6 @@
 .box {
   background: var(--card-color);
   box-shadow: 0 0.5em 1em -0.125em var(--alpha-channel), 0 0 0 1px rgba(10,10,10,.02);
-  transition: all ease 1s;
 }
 
 .is-pink {
@@ -57,7 +56,6 @@
   padding: 1em 2em 2em 2em;
   background-color: var(--main-background-color);
   min-height: 100vh;
-  transition: background 1s ease;
 }
 
 #app .menu{
@@ -342,7 +340,7 @@ html {
 
 .card {
   border-radius: 0.2rem;
-  box-shadow: initial;
+  box-shadow: 0 0.5rem 0.5rem rgba(77, 75, 75, 0.1);
 }
 .card .media {
   margin-bottom: 1.7rem !important;
@@ -545,7 +543,7 @@ i,svg {
   background: rgba(0, 0, 0, 0.1) !important;
 }
 .menu-brick {
-  width: 6rem !important;
+  width: 8.3% !important;
 }
 .userimg {
   margin: 3rem auto;
@@ -560,6 +558,7 @@ i,svg {
   display: flex !important;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 .logout svg {
   width: 2.4rem !important;

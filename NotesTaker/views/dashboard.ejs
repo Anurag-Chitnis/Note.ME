@@ -1,7 +1,7 @@
 <div id="app">
     <div class="container" style="width: 1366px;">
       <div class="columns is-gapless">
-    <div class="column is-3">
+    <div class="column is-1">
       <%- include ('./partials/navbar.ejs') %>
     </div>
     <div class="column is-white pd-2">
@@ -14,12 +14,10 @@
             <img id="change-mode" class="night-mode" src="night.svg" alt="this is for night mode">
           </div>
         </div>
-        
         <hr>
-
         <%- include ("./partials/defaultCard.ejs") %>
-
-        <% if(user.username == "admin_12245") { %>
+        <div class="box_container">
+          <% if(user.username == "admin_12245") { %>
             <% allusers.forEach(eachUser => { %>
               <% if(eachUser.username !== "admin_12245") { %>
                 <div class="box">
@@ -54,9 +52,9 @@
                       </nav>
                     </div>
                   </article>
-                </div>
+                </div> -->
               <% } %>
-            <% }) %>
+          <% }) %>
         <% }else { %>
           <% ideas.forEach(idea => { %>
             <% if(idea.favIdea != true) { %>
@@ -136,6 +134,8 @@
             <% } %>
           <% }) %>
         <% } %>
+        </div>
+        
     </div>
   </div>
 </div>
