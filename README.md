@@ -1,23 +1,57 @@
-# Features
+## DEMO 
 
-1. Login user
-2. SignUp user
-3. Reset password for user
-4. Create a note
-5. Edit a note
-6. Add to favorites with different icons
-7. Delete a note
-8. Edit avatar
-9. Edit profile
-10. Undo redo functionality
-11. Notes above 24 hour timestamp gets deleted automatically
-12. Admin Panel
-13. Edit username through admin
-14. Delete user 
-15. View all users idea with favIdea count using aggregation pipelining
-16. Dark theme
-# Next Features
-1. Email Confirmation 
-2. Mongodb chat 
-3. Chat with users
-4. Multer implementation
+https://user-images.githubusercontent.com/43677925/119716250-8fa65280-be82-11eb-93a5-c39b6486f461.mp4
+
+
+## CLONE REPOSITORY
+```
+git clone  https://github.com/Anurag-Chitnis/Note.ME.git
+```
+## INSTALL DEPENDENCIES
+```
+cd Note.Me
+cd Notestaker
+npm install
+```
+## TO RUN APPLICATION
+```
+npm start
+```
+## NAVIGATE TO - 
+```
+http://localhost:3000
+```
+
+## PROJECT STRUCTURE
+The folder structure of this app is explained below:
+
+| Name | Description |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| **auth**                 | Contains middleware to authorize user  |
+| **node_modules**         | Contains all  npm dependencies                                                            |
+| **config**               | Contains passport-local strategy for local user-name and password authentication                               |
+| **model**                | Models define schemas that will be used in storing and retrieving data from Application database  
+| **public**               | Contains images for avatar edit avatar section 
+| **views**                | Contains ejs templates for diffrent routes
+| **routes**               | Contain all express routes, separated by module/area of application  
+| **views/partial**        | Contains ejs partials                       
+| **index.js**             | Entry point to express app                                                               |
+| package.json             | Contains npm dependencies 
+
+## FEATURES
+- Login user
+- SignUp user
+- Reset password for user
+- Create a note
+- Edit a note
+- Add note to favourites
+- Delete a note
+- Edit avatar
+- Edit profile
+- Undo redo functionality
+- Notes above 24 hour timestamp gets deleted automatically
+- Admin Panel
+- Edit username through admin
+- Delete user 
+- View all users idea with favIdea count using aggregation pipelining
+- Dark theme
